@@ -7,12 +7,12 @@
 #	chrom_size: Two column Tab delimited file containing chromosome name and length.
 #	The expected format is [genome ID].chrom.sizes
 #	bin_size: the desired output bin size in base pairs
-#	filter:
 
 #OUTPUTS:
+# Bed format file with chromosomes dividied into regions of the specified size
 
 #EXAMPLE USAGE:
-#	generate_chrom_bins.sh reference/chrom_sizes/hg38.chrom.sizes reference/chrom_bins/hg38.1Mb_bins.filt.bed 1000000
+#	generate_chrom_bins.sh reference/chrom_sizes/hg38.chrom.sizes 1000000
 
 chrom_size=$1 #Chromosome size file
 bin_size=$2 #Bin size in base pairs
