@@ -1,0 +1,390 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>NATSORTROWS Examples</title><meta name="generator" content="MATLAB 8.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-01-31"><meta name="DC.source" content="natsortrows_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>NATSORTROWS Examples</h1><!--introduction--><p>The function <a href="https://www.mathworks.com/matlabcentral/fileexchange/47433"><tt>NATSORTROWS</tt></a> sorts the rows of an array (cell/string/categorical/table) taking into account number values within the text. This is known as <i>natural order</i> or <i>alphanumeric order</i>. Note that MATLAB's inbuilt <a href="https://www.mathworks.com/help/matlab/ref/sortrows.html"><tt>SORTROWS</tt></a> function sorts text by character code.</p><p>To sort filenames, foldernames, or filepaths use <a href="https://www.mathworks.com/matlabcentral/fileexchange/47434"><tt>NATSORTFILES</tt></a>.</p><p>To sort the elements of a string/cell/categorical array use <a href="https://www.mathworks.com/matlabcentral/fileexchange/34464"><tt>NATSORT</tt></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Basic Usage:</a></li><li><a href="#2">Input 1: Array to Sort</a></li><li><a href="#3">Input 2: Regular Expression</a></li><li><a href="#4">Input 3+: Specify the Columns to Sort</a></li><li><a href="#5">Input 3+: Specify the Sort Directions</a></li><li><a href="#6">Input 3+: Table Row Names</a></li><li><a href="#7">Input 3+: Table Variable Names</a></li><li><a href="#8">Input 3+: Numeric Scalars in a Cell Array</a></li><li><a href="#9">Inputs 3+: Optional Arguments</a></li><li><a href="#10">Output 2: Sort Index</a></li><li><a href="#11">Output 3: Debugging Array</a></li><li><a href="#12">Regular Expression: Decimal Fractions, E-notation, +/- Sign.</a></li><li><a href="#13">Bonus: Interactive Regular Expression Tool</a></li></ul></div><h2>Basic Usage:<a name="1"></a></h2><p>By default <tt>NATSORTROWS</tt> interprets consecutive digits as being part of a single integer, any remaining substrings are treated as text.</p><pre class="codeinput">X = {<span class="string">'A2'</span>,<span class="string">'X'</span>;<span class="string">'A10'</span>,<span class="string">'Y'</span>;<span class="string">'A10'</span>,<span class="string">'X'</span>;<span class="string">'A1'</span>,<span class="string">'X'</span>};
+sortrows(X) <span class="comment">% Wrong number order</span>
+natsortrows(X) <span class="comment">% Correct number order</span>
+</pre><pre class="codeoutput">ans = 
+    'A1'     'X'
+    'A10'    'X'
+    'A10'    'Y'
+    'A2'     'X'
+ans = 
+    'A1'     'X'
+    'A2'     'X'
+    'A10'    'X'
+    'A10'    'Y'
+</pre><h2>Input 1: Array to Sort<a name="2"></a></h2><p>The first input must be one of the following array types:</p><div><ul><li>a character matrix,</li><li>a cell array of character row vectors,</li><li>a cell array with columns consisting either exclusively of character row vectors or exclusively of numeric scalars: see <tt>"SortNum"</tt> option below.</li><li>a <a href="https://www.mathworks.com/help/matlab/ref/table.html">table array</a>,</li><li>a <a href="https://www.mathworks.com/help/matlab/matlab_prog/create-string-arrays.html">string array</a>,</li><li>a <a href="https://www.mathworks.com/help/matlab/categorical-arrays.html">categorical array</a>,</li><li>any other array type that can be converted by   <a href="https://www.mathworks.com/help/matlab/ref/cellstr.html"><tt>CELLSTR</tt></a></li></ul></div><p>The first input must be a matrix (i.e. two dimensions only).</p><p>The sorted array is returned as the first output argument, for example:</p><pre class="codeinput">A = {<span class="string">'B'</span>,<span class="string">'2'</span>,<span class="string">'X'</span>;<span class="string">'A'</span>,<span class="string">'100'</span>,<span class="string">'X'</span>;<span class="string">'B'</span>,<span class="string">'10'</span>,<span class="string">'X'</span>;<span class="string">'A'</span>,<span class="string">'2'</span>,<span class="string">'Y'</span>;<span class="string">'A'</span>,<span class="string">'20'</span>,<span class="string">'X'</span>};
+natsortrows(categorical(A)) <span class="comment">% see also REORDERCATS</span>
+</pre><pre class="codeoutput">ans = 
+     A      2        Y 
+     A      20       X 
+     A      100      X 
+     B      2        X 
+     B      10       X 
+</pre><h2>Input 2: Regular Expression<a name="3"></a></h2><p>The optional second input argument is a regular expression which specifies the number matching (see "Regular Expressions" section below):</p><pre class="codeinput">B = {<span class="string">'1.3'</span>,<span class="string">'X'</span>;<span class="string">'1.10'</span>,<span class="string">'X'</span>;<span class="string">'1.2'</span>,<span class="string">'X'</span>}
+natsortrows(B) <span class="comment">% By default match integers only.</span>
+natsortrows(B, <span class="string">'\d+\.?\d*'</span>) <span class="comment">% Match decimal fractions.</span>
+</pre><pre class="codeoutput">B = 
+    '1.3'     'X'
+    '1.10'    'X'
+    '1.2'     'X'
+ans = 
+    '1.2'     'X'
+    '1.3'     'X'
+    '1.10'    'X'
+ans = 
+    '1.10'    'X'
+    '1.2'     'X'
+    '1.3'     'X'
+</pre><h2>Input 3+: Specify the Columns to Sort<a name="4"></a></h2><p>If required the columns to be sorted may be specified using one of:</p><div><ul><li>Logical vector of indices into the columns of the input array.</li><li>Numeric vector of indices into the columns of the input array, where a   positive integer sorts the corresponding column in ascending order, and   a negative integer sorts the corresponding column in descending order.   This corresponds to <tt>SORTROWS</tt> <tt>columns</tt> option.</li></ul></div><p>For example, the second column is sorted ascending and the third descending:</p><pre class="codeinput">sortrows(A, [2,-3]) <span class="comment">% Wrong number order.</span>
+natsortrows(A, [], [2,-3]) <span class="comment">% Correct number order.</span>
+</pre><pre class="codeoutput">ans = 
+    'B'    '10'     'X'
+    'A'    '100'    'X'
+    'A'    '2'      'Y'
+    'B'    '2'      'X'
+    'A'    '20'     'X'
+ans = 
+    'A'    '2'      'Y'
+    'B'    '2'      'X'
+    'B'    '10'     'X'
+    'A'    '20'     'X'
+    'A'    '100'    'X'
+</pre><h2>Input 3+: Specify the Sort Directions<a name="5"></a></h2><p><tt>SORTROWS</tt> <tt>direction</tt> option is supported, where a cell array of the character vectors <tt>'ascend'</tt>, <tt>'descend'</tt>, and/or <tt>'ignore'</tt> specify the sort directions of the columns to be sorted (this means either all of the columns or the columns specified by the <tt>column</tt> or <tt>vars</tt> option).</p><p>In these examples the second column is sorted ascending and the third descending:</p><pre class="codeinput">natsortrows(A, [], [2,3], {<span class="string">'ascend'</span>,<span class="string">'descend'</span>})
+natsortrows(A, [], [false,true,true], {<span class="string">'ascend'</span>,<span class="string">'descend'</span>})
+natsortrows(A, [], {<span class="string">'ignore'</span>,<span class="string">'ascend'</span>,<span class="string">'descend'</span>})
+</pre><pre class="codeoutput">ans = 
+    'A'    '2'      'Y'
+    'B'    '2'      'X'
+    'B'    '10'     'X'
+    'A'    '20'     'X'
+    'A'    '100'    'X'
+ans = 
+    'A'    '2'      'Y'
+    'B'    '2'      'X'
+    'B'    '10'     'X'
+    'A'    '20'     'X'
+    'A'    '100'    'X'
+ans = 
+    'A'    '2'      'Y'
+    'B'    '2'      'X'
+    'B'    '10'     'X'
+    'A'    '20'     'X'
+    'A'    '100'    'X'
+</pre><h2>Input 3+: Table Row Names<a name="6"></a></h2><p><tt>SORTROWS</tt> <tt>'RowNames'</tt> option is supported for tables, either as the literal text <tt>'RowNames'</tt> or as the name of table's first dimension (i.e. <tt>SORTROWS</tt> <tt>rowDimName</tt> option).</p><pre class="codeinput">T = cell2table(A,<span class="string">'RowNames'</span>,{<span class="string">'R20'</span>,<span class="string">'R1'</span>,<span class="string">'R10'</span>,<span class="string">'R2'</span>,<span class="string">'R9'</span>},<span class="string">'VariableNames'</span>,{<span class="string">'V1'</span>,<span class="string">'V2'</span>,<span class="string">'V3'</span>})
+natsortrows(T, [], <span class="string">'RowNames'</span>)
+natsortrows(T, [], <span class="string">'Row'</span>) <span class="comment">% First Dimension Name</span>
+</pre><pre class="codeoutput">T = 
+           V1      V2      V3 
+           ___    _____    ___
+    R20    'B'    '2'      'X'
+    R1     'A'    '100'    'X'
+    R10    'B'    '10'     'X'
+    R2     'A'    '2'      'Y'
+    R9     'A'    '20'     'X'
+ans = 
+           V1      V2      V3 
+           ___    _____    ___
+    R1     'A'    '100'    'X'
+    R2     'A'    '2'      'Y'
+    R9     'A'    '20'     'X'
+    R10    'B'    '10'     'X'
+    R20    'B'    '2'      'X'
+ans = 
+           V1      V2      V3 
+           ___    _____    ___
+    R1     'A'    '100'    'X'
+    R2     'A'    '2'      'Y'
+    R9     'A'    '20'     'X'
+    R10    'B'    '10'     'X'
+    R20    'B'    '2'      'X'
+</pre><h2>Input 3+: Table Variable Names<a name="7"></a></h2><p><tt>SORTROWS</tt> <tt>vars</tt> option is supported for tables, i.e. one of:</p><div><ul><li>a logical or numeric vector of indices into the table variables.</li><li>the name of one table variable to sort by.</li><li>a cell array of one or more names of the table variables to sort by.</li></ul></div><pre class="codeinput">natsortrows(T, [], {<span class="string">'V2'</span>,<span class="string">'V3'</span>},{<span class="string">'ascend'</span>,<span class="string">'descend'</span>})
+natsortrows(T, [], [2,3], {<span class="string">'ascend'</span>,<span class="string">'descend'</span>})
+</pre><pre class="codeoutput">ans = 
+           V1      V2      V3 
+           ___    _____    ___
+    R2     'A'    '2'      'Y'
+    R20    'B'    '2'      'X'
+    R10    'B'    '10'     'X'
+    R9     'A'    '20'     'X'
+    R1     'A'    '100'    'X'
+ans = 
+           V1      V2      V3 
+           ___    _____    ___
+    R2     'A'    '2'      'Y'
+    R20    'B'    '2'      'X'
+    R10    'B'    '10'     'X'
+    R9     'A'    '20'     'X'
+    R1     'A'    '100'    'X'
+</pre><h2>Input 3+: Numeric Scalars in a Cell Array<a name="8"></a></h2><p>When sorting a cell array any columns consisting exclusively of numeric or logical scalars may be sorted by selecting the <tt>'SortNum'</tt> option.</p><p>An example of a mixed cell array, where 1st column consists entirely of character row vectors and 2nd column consists entirely of numeric scalars:</p><pre class="codeinput">C = {<span class="string">'A2'</span>,2;<span class="string">'A10'</span>,1;<span class="string">'A2'</span>,1}
+natsortrows(C,[],<span class="string">'SortNum'</span>)
+</pre><pre class="codeoutput">C = 
+    'A2'     [2]
+    'A10'    [1]
+    'A2'     [1]
+ans = 
+    'A2'     [1]
+    'A2'     [2]
+    'A10'    [1]
+</pre><h2>Inputs 3+: Optional Arguments<a name="9"></a></h2><p>Further inputs are passed directly to <tt>NATSORT</tt>, thus giving control over the case sensitivity, sort direction, and other options. See the <tt>NATSORT</tt> help for explanations and examples of the supported options:</p><pre class="codeinput">D = {<span class="string">'B'</span>,<span class="string">'X'</span>;<span class="string">'10'</span>,<span class="string">'X'</span>;<span class="string">'1'</span>,<span class="string">'X'</span>;<span class="string">'A'</span>,<span class="string">'X'</span>;<span class="string">'2'</span>,<span class="string">'X'</span>}
+natsortrows(D, [], <span class="string">'descend'</span>)
+natsortrows(D, [], <span class="string">'char&lt;num'</span>)
+</pre><pre class="codeoutput">D = 
+    'B'     'X'
+    '10'    'X'
+    '1'     'X'
+    'A'     'X'
+    '2'     'X'
+ans = 
+    'B'     'X'
+    'A'     'X'
+    '10'    'X'
+    '2'     'X'
+    '1'     'X'
+ans = 
+    'A'     'X'
+    'B'     'X'
+    '1'     'X'
+    '2'     'X'
+    '10'    'X'
+</pre><h2>Output 2: Sort Index<a name="10"></a></h2><p>The second output argument is a numeric array of the sort indices <tt>ndx</tt>, such that <tt>Y = X(ndx,:)</tt> where  for <tt>Y = natsortrows(X)</tt>:</p><pre class="codeinput">E = {<span class="string">'abc2xyz'</span>,<span class="string">'Y'</span>;<span class="string">'abc10xy99'</span>,<span class="string">'X'</span>;<span class="string">'abc2xyz'</span>,<span class="string">'X'</span>;<span class="string">'abc1xyz'</span>,<span class="string">'X'</span>}
+[out,ndx] = natsortrows(E)
+</pre><pre class="codeoutput">E = 
+    'abc2xyz'      'Y'
+    'abc10xy99'    'X'
+    'abc2xyz'      'X'
+    'abc1xyz'      'X'
+out = 
+    'abc1xyz'      'X'
+    'abc2xyz'      'X'
+    'abc2xyz'      'Y'
+    'abc10xy99'    'X'
+ndx =
+     4
+     3
+     1
+     2
+</pre><h2>Output 3: Debugging Array<a name="11"></a></h2><p>The third output is a cell vector of cell arrays, where the cell arrays correspond to the columns of the input cell array <tt>X</tt>. The cell arrays contain all matched numbers (after converting to numeric using the specified <tt>SSCANF</tt> format) and all non-number substrings. These cell arrays are useful for confirming that the numbers are being correctly identified by the regular expression.</p><pre class="codeinput">[~,~,dbg] = natsortrows(E);
+dbg{:}
+</pre><pre class="codeoutput">ans = 
+    'abc'    [ 2]    'xyz'      []
+    'abc'    [10]    'xy'     [99]
+    'abc'    [ 2]    'xyz'      []
+    'abc'    [ 1]    'xyz'      []
+ans = 
+    'Y'
+    'X'
+    'X'
+    'X'
+</pre><h2>Regular Expression: Decimal Fractions, E-notation, +/- Sign.<a name="12"></a></h2><p><tt>NATSORTROWS</tt> number matching can be customized to detect numbers with a decimal fraction, E-notation, a +/- sign, binary/hexadecimal, or other required features. The number matching is specified using an appropriate regular expression, see <tt>NATSORT</tt> for details and examples.</p><pre class="codeinput">F = {<span class="string">'v10.2'</span>,<span class="string">'b'</span>; <span class="string">'v2.5'</span>,<span class="string">'b'</span>; <span class="string">'v2.40'</span>,<span class="string">'a'</span>; <span class="string">'v1.9'</span>,<span class="string">'b'</span>}
+natsortrows(F) <span class="comment">% by default match integers, e.g. version numbers.</span>
+natsortrows(F,<span class="string">'\d+\.?\d*'</span>) <span class="comment">% match decimal fractions.</span>
+</pre><pre class="codeoutput">F = 
+    'v10.2'    'b'
+    'v2.5'     'b'
+    'v2.40'    'a'
+    'v1.9'     'b'
+ans = 
+    'v1.9'     'b'
+    'v2.5'     'b'
+    'v2.40'    'a'
+    'v10.2'    'b'
+ans = 
+    'v1.9'     'b'
+    'v2.40'    'a'
+    'v2.5'     'b'
+    'v10.2'    'b'
+</pre><h2>Bonus: Interactive Regular Expression Tool<a name="13"></a></h2><p>Regular expressions are powerful and compact, but getting them right is not always easy. One assistance is to download my interactive tool <a href="https://www.mathworks.com/matlabcentral/fileexchange/48930"><tt>IREGEXP</tt></a>, which lets you quickly try different regular expressions and see all of <a href="https://www.mathworks.com/help/matlab/ref/regexp.html"><tt>REGEXP</tt></a>'s outputs displayed and updated as you type.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% NATSORTROWS Examples
+% The function <https://www.mathworks.com/matlabcentral/fileexchange/47433
+% |NATSORTROWS|> sorts the rows of an array (cell/string/categorical/table)
+% taking into account number values within the text. This is known as
+% _natural order_ or _alphanumeric order_. Note that MATLAB's inbuilt
+% <https://www.mathworks.com/help/matlab/ref/sortrows.html |SORTROWS|>
+% function sorts text by character code.
+%
+% To sort filenames, foldernames, or filepaths use
+% <https://www.mathworks.com/matlabcentral/fileexchange/47434 |NATSORTFILES|>.
+%
+% To sort the elements of a string/cell/categorical array use
+% <https://www.mathworks.com/matlabcentral/fileexchange/34464 |NATSORT|>.
+%
+%% Basic Usage:
+% By default |NATSORTROWS| interprets consecutive digits as being part of
+% a single integer, any remaining substrings are treated as text.
+X = {'A2','X';'A10','Y';'A10','X';'A1','X'};
+sortrows(X) % Wrong number order
+natsortrows(X) % Correct number order
+%% Input 1: Array to Sort
+% The first input must be one of the following array types:
+%
+% * a character matrix,
+% * a cell array of character row vectors,
+% * a cell array with columns consisting either exclusively of character row
+% vectors or exclusively of numeric scalars: see |"SortNum"| option below.
+% * a <https://www.mathworks.com/help/matlab/ref/table.html table array>,
+% * a <https://www.mathworks.com/help/matlab/matlab_prog/create-string-arrays.html string array>,
+% * a <https://www.mathworks.com/help/matlab/categorical-arrays.html categorical array>,
+% * any other array type that can be converted by
+%   <https://www.mathworks.com/help/matlab/ref/cellstr.html |CELLSTR|>
+%
+% The first input must be a matrix (i.e. two dimensions only).
+%
+% The sorted array is returned as the first output argument, for example:
+A = {'B','2','X';'A','100','X';'B','10','X';'A','2','Y';'A','20','X'};
+natsortrows(categorical(A)) % see also REORDERCATS
+%% Input 2: Regular Expression
+% The optional second input argument is a regular expression which
+% specifies the number matching (see "Regular Expressions" section below):
+B = {'1.3','X';'1.10','X';'1.2','X'}
+natsortrows(B) % By default match integers only.
+natsortrows(B, '\d+\.?\d*') % Match decimal fractions.
+%% Input 3+: Specify the Columns to Sort
+% If required the columns to be sorted may be specified using one of:
+%
+% * Logical vector of indices into the columns of the input array.
+% * Numeric vector of indices into the columns of the input array, where a
+%   positive integer sorts the corresponding column in ascending order, and
+%   a negative integer sorts the corresponding column in descending order.
+%   This corresponds to |SORTROWS| |columns| option.
+%
+% For example, the second column is sorted ascending and the third descending:
+sortrows(A, [2,-3]) % Wrong number order.
+natsortrows(A, [], [2,-3]) % Correct number order.
+%% Input 3+: Specify the Sort Directions
+% |SORTROWS| |direction| option is supported, where a cell array of the
+% character vectors |'ascend'|, |'descend'|, and/or |'ignore'| specify the
+% sort directions of the columns to be sorted (this means either all of
+% the columns or the columns specified by the |column| or |vars| option).
+%
+% In these examples the second column is sorted ascending and the third descending:
+natsortrows(A, [], [2,3], {'ascend','descend'})
+natsortrows(A, [], [false,true,true], {'ascend','descend'})
+natsortrows(A, [], {'ignore','ascend','descend'})
+%% Input 3+: Table Row Names
+% |SORTROWS| |'RowNames'| option is supported for tables, either as the
+% literal text |'RowNames'| or as the name of table's first dimension
+% (i.e. |SORTROWS| |rowDimName| option).
+T = cell2table(A,'RowNames',{'R20','R1','R10','R2','R9'},'VariableNames',{'V1','V2','V3'})
+natsortrows(T, [], 'RowNames')
+natsortrows(T, [], 'Row') % First Dimension Name
+%% Input 3+: Table Variable Names
+% |SORTROWS| |vars| option is supported for tables, i.e. one of:
+%
+% * a logical or numeric vector of indices into the table variables.
+% * the name of one table variable to sort by.
+% * a cell array of one or more names of the table variables to sort by.
+natsortrows(T, [], {'V2','V3'},{'ascend','descend'})
+natsortrows(T, [], [2,3], {'ascend','descend'})
+%% Input 3+: Numeric Scalars in a Cell Array
+% When sorting a cell array any columns consisting exclusively of numeric
+% or logical scalars may be sorted by selecting the |'SortNum'| option.
+%
+% An example of a mixed cell array, where 1st column consists entirely of
+% character row vectors and 2nd column consists entirely of numeric scalars:
+C = {'A2',2;'A10',1;'A2',1}
+natsortrows(C,[],'SortNum')
+%% Inputs 3+: Optional Arguments
+% Further inputs are passed directly to |NATSORT|, thus giving control
+% over the case sensitivity, sort direction, and other options. See the
+% |NATSORT| help for explanations and examples of the supported options:
+D = {'B','X';'10','X';'1','X';'A','X';'2','X'}
+natsortrows(D, [], 'descend')
+natsortrows(D, [], 'char<num')
+%% Output 2: Sort Index
+% The second output argument is a numeric array of the sort indices |ndx|,
+% such that |Y = X(ndx,:)| where  for |Y = natsortrows(X)|:
+E = {'abc2xyz','Y';'abc10xy99','X';'abc2xyz','X';'abc1xyz','X'}
+[out,ndx] = natsortrows(E)
+%% Output 3: Debugging Array
+% The third output is a cell vector of cell arrays, where the cell arrays
+% correspond to the columns of the input cell array |X|.
+% The cell arrays contain all matched numbers (after converting to
+% numeric using the specified |SSCANF| format) and all non-number
+% substrings. These cell arrays are useful for confirming that the
+% numbers are being correctly identified by the regular expression.
+[~,~,dbg] = natsortrows(E);
+dbg{:}
+%% Regular Expression: Decimal Fractions, E-notation, +/- Sign.
+% |NATSORTROWS| number matching can be customized to detect numbers with
+% a decimal fraction, E-notation, a +/- sign, binary/hexadecimal, or other
+% required features. The number matching is specified using an
+% appropriate regular expression, see |NATSORT| for details and examples.
+F = {'v10.2','b'; 'v2.5','b'; 'v2.40','a'; 'v1.9','b'}
+natsortrows(F) % by default match integers, e.g. version numbers.
+natsortrows(F,'\d+\.?\d*') % match decimal fractions.
+%% Bonus: Interactive Regular Expression Tool
+% Regular expressions are powerful and compact, but getting them right is
+% not always easy. One assistance is to download my interactive tool
+% <https://www.mathworks.com/matlabcentral/fileexchange/48930 |IREGEXP|>,
+% which lets you quickly try different regular expressions and see all of
+% <https://www.mathworks.com/help/matlab/ref/regexp.html |REGEXP|>'s
+% outputs displayed and updated as you type.
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,120 @@
+%% To do list
+%write the profiles file
+%add resitual correlation
+%save the residual track
+%format track for igv
+%writetable(model_track,'StepwiseLm_Model.bedgraph','Delimiter','\t','FileType','Text','WriteVariableNames',0)
+
+%% Set up
+close all;
+clear all;
+
+addpath(genpath('scripts/bin'));
+
+solar_extra = colorsJDB('color','solar_extra');
+save_path ='figures/figure3';
+
+%% Load the bedgraphs into a single table (includes stepwise regression to remove lamin signal from PSS periphery profile)
+bedgraph_dir = ('data/processed/figure3_bedgraphs');
+
+%set to 1 to update and overwrite table
+make_table = 1;
+
+if make_table
+    profiles = bedgraphsToTable(bedgraph_dir);
+    writetable(profiles,[bedgraph_dir,filesep,'summary_table.txt']);
+else
+    profiles = readtable([bedgraph_dir,filesep,'summary_table.txt']);
+end
+
+
+%% Make the residual track
+
+%get the profiiles
+pss = profiles.PSS;
+lam = profiles.lamin;
+
+%exclude zero bins from regression
+pss(pss == 0) = NaN;
+lam(lam == 0)= NaN;
+
+%do the regression
+mdl = stepwiselm(lam,pss,'penter',.01); 
+pss_res = mdl.Residuals.Raw;
+
+res = profiles(:,1:3);
+res.pss_res = pss_res;
+
+
+%% Figure 1B - chromosome level enrichment plot
+
+
+
+%% Fig 1C - Visualize traces
+
+%This flashes the plot and saves the file (top: ChIP, bottom: PSS)
+save_path = 'figures/figure3/enrichment_bargraphs';
+disp_enr_bar(profiles,save_path);
+
+%% Figure 1D - Correlations
+
+[~,r_sig,~,rowname,colname] = cor_by_chr(profiles,1);
+
+figure(1)
+plot_heatmap(r_sig,rowname,colname)
+title('Correlations by Chromosome')
+set(gcf, 'InvertHardcopy', 'off')
+colormap(solar_extra);
+format_page([8,5])
+
+print('-dpdf',[save_path,filesep,'cor_by_chr.pdf'])
+
+%% Sup Fig 4B - Residual Correlations
+
+%Swap the PSS profile for the residual
+profiles_res = [res,profiles(:,6:end)];
+[~,r_sig,~,rowname,colname] = cor_by_chr(profiles_res,1);
+
+figure(2)
+plot_heatmap(r_sig,rowname,colname)
+title('Residual Correlations by Chromosome')
+set(gcf, 'InvertHardcopy', 'off')
+colormap(solar_extra);
+format_page([8,5])
+
+print('-dpdf',[save_path,filesep,'res_cor_by_chr.pdf'])
+
+%% Sup Fig XX - Individual tracks
+
+%load the bedgraphs (get PSS and Lamin ChIP for comparison)
+pss_raw_sel = readtable('data/processed/figure3_bedgraphs/PSS_Periphery_Bedgraphs_100000bp/rawSelCounts.bedgraph','FileType','text');
+pss_raw_input = readtable('data/processed/figure3_bedgraphs/PSS_Periphery_Bedgraphs_100000bp/rawTotCounts.bedgraph','FileType','text');
+
+%%
+bins = 1:1:numel(pss_raw_sel.Var2);
+bar_width = 0.8;
+
+figure(3)
+tiledlayout(4,1,'TileSpacing','tight')
+
+nexttile;
+bar(bins,pss_raw_sel.Var4,bar_width)
+xlabel('Genomic Position')
+ylabel('Counts')
+title('PSS Selected')
+ax = gca;
+ax.YTick=[];
+
+nexttile;
+bar(bins,pss_raw_input.Var4,bar_width)
+xlabel('Genomic Position')
+ylabel('Counts')
+title('PSS Input')
+ax = gca;
+ax.YTick=[];
+
+
+format_page([10,8]);
+print('-dpdf',[save_path,filesep,'raw_counts_bargraph.pdf'])
+print('-dpng',[save_path,filesep,'raw_counts_bargraph.png'])
+
