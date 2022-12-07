@@ -22,6 +22,7 @@ To efficienntly run cell_type_deconvolution.R we reccomennd using a system with 
 ### Operating system 
 We tested the Matlab scripts using Mac OS Monterey, however we expect that the code would be supported by any operating system where suitable versions of R and Matlab are availible. 
 
+### Other software dependancies
 Matlab scripts were tested in version R2022a, and require at least R2019b. 
 
 R scripts were tested in R4.1 and require R4.1 or later
