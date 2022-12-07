@@ -25,5 +25,9 @@ We tested the Matlab scripts using Mac OS Monterey, however we expect that the c
 ### Other software dependancies
 Matlab scripts were tested in version R2022a, and require at least R2019b. 
 
-R scripts were tested in R4.1 and require R4.1 or later.
+R scripts were tested in R 4.1 and require R 4.1 or later.
+
+Additionally, the following R packages are required:
+[ChromVAR:](https://github.com/GreenleafLab/chromVAR) https://github.com/GreenleafLab/chromVAR
+
 
