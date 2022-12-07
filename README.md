@@ -4,6 +4,8 @@ This repository contains nalysis scripts to reproduce main figures in Photoselec
 # Contents
 [scripts:](https://github.com/sarahmangiameli/pss-tools/tree/main/scripts) This directory contains the analysis scripts. Scripts that are meant to be run directly to can be found in the figure directory that corresponds to the main text figure where the analysis was presented.
 
+[scripts/image_analysis_elements:](https://github.com/sarahmangiameli/pss-tools/tree/main/scripts/image_analysis_elements) This directory contains scripts for image analysis and automated photoselection on our Nikon microscope. 
+
 [reference:](https://github.com/sarahmangiameli/pss-tools/tree/main/reference) This directory contains reference information such as chromosome lengths and the genomic bins for the enrichment plots in Fig. 3.
 
 [figures:](https://github.com/sarahmangiameli/pss-tools/tree/main/figures) This directory contains example output files from the analysis scripts.
