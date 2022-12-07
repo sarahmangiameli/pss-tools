@@ -44,6 +44,11 @@ library(ggrepel)
 library(BSgenome.Mmusculus.UCSC.mm10)
 library(pheatmap)
 library(olsrr)
+library(tidyverse)
+library(BiocParallel)
+library(reshape2)
+library(grid)
+library(MASS)
 ```
 
 
