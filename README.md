@@ -53,6 +53,8 @@ library(MASS)
 
 # Instructions
 
-We reccomend that the user download the entire directory and use the top level as the working directory. If data are placed in the structure as in our example, the scripts should not require modifications to run. We typically run the Matlab scripts interactivly, and the R and shell scripts through a command line, eg:
+We reccomend that the user download the entire repository (should take less than a few minutes) and use the top level as the working directory. If data are placed in the structure as in our example, the scripts should not require modifications to run. We typically run the Matlab scripts interactivly, and the R and shell scripts through a command line, eg:
 
 ```RScript scripts/figure2/radial_intensity_profile.m```
+
+The output of the scripts will be sent to the [figures](https://github.com/sarahmangiameli/pss-tools/tree/main/figures) directory. Example output from our run will populate this directory at the time of download, and be overwritten by any new runs. 
