@@ -27,11 +27,24 @@ Matlab scripts were tested in version R2022a, and require at least R2019b.
 
 R scripts were tested in R 4.1 and require R 4.1 or later.
 
-Additionally, the following R packages are required:
+Note that the following libraries must be installed to run the R scripts
 
-[ChromVAR](https://github.com/GreenleafLab/chromVAR)
-
-[cisTopic](https://github.com/aertslab/cisTopic)
+```
+library(data.table)
+library(Matrix)
+library(chromVAR)
+library(GenomicRanges)
+library(SummarizedExperiment)
+library(cisTopic)
+library(ggplot2)
+library(umap)
+library(BuenColors)
+library(dplyr)
+library(ggrepel)
+library(BSgenome.Mmusculus.UCSC.mm10)
+library(pheatmap)
+library(olsrr)
+```
 
 
 
