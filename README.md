@@ -3,6 +3,9 @@ This repository contains nalysis scripts to reproduce main figures in Photoselec
 
 # Contents
 [Scripts:](https://github.com/sarahmangiameli/pss-tools/tree/main/scripts)
+
 [Reference:](https://github.com/sarahmangiameli/pss-tools/tree/main/scripts)
+
 [Figures:](https://github.com/sarahmangiameli/pss-tools/tree/main/scripts)
+
 [Data:](https://github.com/sarahmangiameli/pss-tools/tree/main/scripts)
