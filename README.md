@@ -51,5 +51,8 @@ library(grid)
 library(MASS)
 ```
 
+# Instructions
 
+We reccomend that the user download the entire directory and use the top level as the working directory. If data are placed in the structure as in our example, the scripts should not require modifications to run. We typically run the Matlab scripts interactivly, and the R and shell scripts through a command line, eg:
 
+```RScript scripts/figure2/radial_intensity_profile.m```
