@@ -16,3 +16,10 @@ This repository contains nalysis scripts to reproduce main figures in Photoselec
 A typical laptop will have sufficient resources to run most of the analysis scripts (except cell_type_deconvolution.R). We tested these scripts on a laptop with 16 GB of RAM and 4 cores @ 2.7 GHz CPU. 
 
 To efficienntly run cell_type_deconvolution.R we reccomennd using a system with at least 80 GB of RAM. 
+
+## Software
+
+Matlab scripts were tested in version R2022a, and require at least R2019b. 
+
+R scripts were tested in R4.1 and require R4.1 or later
+
