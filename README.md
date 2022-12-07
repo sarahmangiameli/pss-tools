@@ -13,9 +13,9 @@ This repository contains nalysis scripts to reproduce main figures in Photoselec
 # System Requirments
 
 ## Hardware
-A typical laptop will have sufficient resources to run most of the analysis scripts (except cell_type_deconvolution.R). We tested these scripts on a laptop with 16 GB of RAM and 4 cores @ 2.7 GHz CPU. 
+A typical laptop will have sufficient resources to run most of the analysis scripts (except cell_type_deconvolution.R). We tested these scripts on a laptop with 16 GB of RAM and 4 cores @ 2.7 GHz CPU. With these specifications, the scripts should run in under 5 minutes, except for radial_intensity_profile.m, which will take about 2 hours. 
 
-To efficienntly run cell_type_deconvolution.R we reccomennd using a system with at least 80 GB of RAM. 
+To efficienntly run cell_type_deconvolution.R we reccomennd using a system with at least 80 GB of RAM. With these specifications the script will run in roughly 6 hours. 
 
 ## Software
 
