@@ -2,10 +2,10 @@
 This repository contains nalysis scripts to reproduce main figures in Photoselective sequencing: microscopically-guided genomic measurements with subcellular resolution
 
 # Contents
-[Scripts:](https://github.com/sarahmangiameli/pss-tools/tree/main/scripts)
+[/scripts:](https://github.com/sarahmangiameli/pss-tools/tree/main/scripts)
 
-[Reference:](https://github.com/sarahmangiameli/pss-tools/tree/main/scripts)
+[/reference:](https://github.com/sarahmangiameli/pss-tools/tree/main/reference)
 
-[Figures:](https://github.com/sarahmangiameli/pss-tools/tree/main/scripts)
+[/figures:](https://github.com/sarahmangiameli/pss-tools/tree/main/figures)
 
-[Data:](https://github.com/sarahmangiameli/pss-tools/tree/main/scripts)
+[/data:](https://github.com/sarahmangiameli/pss-tools/tree/main/data)
