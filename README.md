@@ -27,7 +27,7 @@ Matlab scripts were tested in version R2022a, and require at least R2019b.
 
 R scripts were tested in R 4.1 and require R 4.1 or later.
 
-Note that the following libraries must be installed to run the R scripts
+Note that the following libraries must be installed to run the R scripts:
 
 ```
 library(data.table)
