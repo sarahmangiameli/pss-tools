@@ -4,8 +4,15 @@ This repository contains nalysis scripts to reproduce main figures in Photoselec
 # Contents
 [scripts:](https://github.com/sarahmangiameli/pss-tools/tree/main/scripts) This directory contains the analysis scripts. Scripts that are meant to be run directly to can be found in the figure directory that corresponds to the main text figure where the analysis was presented.
 
-[reference:](https://github.com/sarahmangiameli/pss-tools/tree/main/reference) This directory contains reference information such as chromosome lengths for various genome builds and the genomic bins for the enrichment plots in Fig. 3.
+[reference:](https://github.com/sarahmangiameli/pss-tools/tree/main/reference) This directory contains reference information such as chromosome lengths and the genomic bins for the enrichment plots in Fig. 3.
 
 [figures:](https://github.com/sarahmangiameli/pss-tools/tree/main/figures) This directory contains example output files from the analysis scripts.
 
 [data:](https://github.com/sarahmangiameli/pss-tools/tree/main/data) This directory contains raw data required to run the scripts such as aligned reads, tables, and images.
+
+# System Requirments
+
+##Hardware
+A typical laptop will have sufficient resources to run most of the analysis scripts (except cell_type_deconvolution.R). We tested these scripts on a laptop with 16 GB of RAM and 4 cores @ 2.7 GHz CPU. 
+
+To efficienntly run cell_type_deconvolution.R we reccomennd using a system with at least 80 GB of RAM. 
